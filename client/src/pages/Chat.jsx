@@ -26,7 +26,10 @@ const Chat = () => {
 
   const fetchConversations = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/conversations');
+      const token = localStorage.getItem('token');
+      console.log("*******");
+      console.log(token);
+      const response = await axios.post('http://localhost:5000/api/conversations',{token});
       if (response.status === 200) {
         setConversations(response.data);
       }
